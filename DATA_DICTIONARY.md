@@ -1,9 +1,9 @@
 # Data dictionary
 
 All figures are cited: every value column has a companion `*_source_url` (CSV) or `source_url`
-(JSON) giving the primary source it was taken from. Blank means "not published / unknown", never a
-guess. `confidence` is `confirmed` (read from the primary source) or `reported` (reputable
-secondary source).
+(JSON) giving the cited source. Blank prices mean "not published / unknown"; a blank employer percentage
+with `fixed-amounts` means fixed contributions, not zero. `confidence` preserves the catalog
+flag (`confirmed` or `reported`); consult the linked source for authority and applicability.
 
 ## `eor-providers` (63 rows)
 
@@ -17,7 +17,7 @@ secondary source).
 | `price_confidence` | `confirmed` or `reported`, including quote-only terms. |
 | `price_source_url` | Primary source for the price or quote terms (raw provider URL, never an affiliate redirect). |
 | `founded_year` | Year the provider was founded, where known. |
-| `besteor_profile_slug` | The provider's page slug on BestEOR.co (`https://besteor.co/<slug>`). |
+| `besteor_profile_slug` | The provider's page slug on BestEOR.co (`https://besteor.co/mowers/<slug>`). |
 
 The JSON file additionally carries dataset-level summary stats (provider count, published-price count,
 median/min/max published price, `prices_last_verified`).
@@ -32,7 +32,8 @@ Identity and macro:
 | `slug` | The country's page slug on BestEOR.co (`https://besteor.co/countries/<slug>`). |
 | `region`, `income_group` | World Bank region and income group. |
 | `currency` | Local currency (ISO 4217). |
-| `employer_cost_pct` | Statutory employer cost of employment, as a % of gross salary (core mandatory contributions). |
+| `employer_cost_pct` | Representative comparison percentage, not a salary-specific effective rate. Null for fixed contributions; a numeric zero remains a real zero. |
+| `employer_cost_basis` | `percentage` or `fixed-amounts`. Never infer zero from a blank percentage. |
 | `employer_cost_detail`, `employer_cost_note` | The breakdown text and caveats behind that headline rate. |
 | `gni_per_capita_usd`, `gdp_per_capita_usd`, `population`, `unemployment_pct` | World Bank macro backbone. `macro_year` gives the reference year. |
 | `minimum_wage` | Statutory minimum wage, as stated by the source. |
@@ -59,4 +60,5 @@ Statutory employment terms (each a value column plus a `*_source_url`):
 | `timeZone` | Time zone. |
 
 The JSON file nests these under `employment_terms`, each with `label`, `value`, `source_url` and
-`confidence`, and additionally carries the employer-cost breakdown components per country.
+`confidence`, and carries `employer_cost_detail`, `employer_cost_note`,
+`employer_cost_basis` and `employer_cost_pct_description` for interpretation.

@@ -1,6 +1,6 @@
 /**
  * Portable open-data snapshot generator. Both local publishing and the public
- * repository's scheduled workflow run this exact file, with no dependencies.
+ * repository's release process run this exact file, with no dependencies.
  * Only the live canonical exports are inputs; never mix local and deployed data.
  * Run: node scripts/gen-open-dataset.mjs <output-directory>
  */
@@ -183,11 +183,16 @@ Maintained and kept current by **[BestEOR.co](${SITE}/?utm_source=github&utm_med
 Employer-of-Record and global-payroll buyers. The website is the canonical source;
 this repository is a dated snapshot of it. Fetched ${date}.
 
-[![Dataset refresh](https://github.com/yumaheymans/besteor-open-dataset/actions/workflows/refresh.yml/badge.svg)](https://github.com/yumaheymans/besteor-open-dataset/actions/workflows/refresh.yml)
+**Need current figures? Download the live exports:**
 
-The scheduled refresh checks the live exports daily. See [data/_manifest.json](data/_manifest.json)
-for the fetch time, source URLs and checksums. A fetch date is not a legal or price verification date.
-The workflow preserves the last valid snapshot if validation fails.
+| Dataset | CSV | JSON |
+|---------|-----|------|
+| Providers | [Live CSV](${SITE}/data/eor-providers.csv?utm_source=github&utm_medium=dataset&utm_campaign=open-data) | [Live JSON](${SITE}/data/eor-providers.json?utm_source=github&utm_medium=dataset&utm_campaign=open-data) |
+| Countries | [Live CSV](${SITE}/data/eor-country-employment.csv?utm_source=github&utm_medium=dataset&utm_campaign=open-data) | [Live JSON](${SITE}/data/eor-country-employment.json?utm_source=github&utm_medium=dataset&utm_campaign=open-data) |
+
+The files in this repository are dated snapshots, refreshed when a release is published. They do not
+update automatically. See [data/_manifest.json](data/_manifest.json) for the fetch time, source URLs
+and checksums. A fetch date is not a legal or price verification date.
 [Archived releases](https://doi.org/10.5281/zenodo.22845248) have permanent, versioned DOIs.
 
 > **Attribution (required by the licence):** if you use this data, credit **BestEOR.co** with a link
@@ -247,12 +252,13 @@ See **[DATA_DICTIONARY.md](DATA_DICTIONARY.md)** for every column and field.
 
 ## Regenerating
 
-These files are produced from the BestEOR.co dataset by \`scripts/gen-open-dataset.mts\` in the
+These files are produced from the BestEOR.co dataset by \`scripts/gen-open-dataset.mjs\` in the
 BestEOR codebase. All four CSV/JSON files are pulled verbatim from the live site exports after validating row
 counts, unique keys, numeric types, fixed-amount semantics and CSV/JSON agreement.
 Run \`node scripts/gen-open-dataset.mjs <output-directory>\` to generate a local snapshot.
-The GitHub workflow uses the same generator. It publishes an atomic commit only when data or
-the UTC snapshot day changes, and reads that commit back to verify every checksum.
+The maintainer publishes through \`scripts/sync-open-dataset.mjs\`, which uses the same generator,
+requires a repository token, preserves unrelated files, and reads the published commit back to
+verify every checksum. Repeating the same data on the same UTC day does not create another commit.
 
 ## Licence
 
