@@ -6,7 +6,7 @@ machine-readable datasets, released under **[CC BY 4.0](https://creativecommons.
 
 Maintained and kept current by **[BestEOR.co](https://besteor.co/?utm_source=github&utm_medium=dataset&utm_campaign=open-data)**, an independent comparison resource for
 Employer-of-Record and global-payroll buyers. The website is the canonical source;
-this repository is a dated snapshot of it. Fetched 2026-09-23.
+this repository is a dated snapshot of it. Fetched 2026-09-24.
 
 **Need current figures? Download the live exports:**
 
@@ -26,8 +26,8 @@ and checksums. A fetch date is not a legal or price verification date.
 ## What is in here
 
 ### 1. EOR providers and pricing (`data/eor-providers.*`)
-63 Employer-of-Record and global-payroll providers, 30 of which
-publish a list price (the other 33 are quote-only, marked as such
+63 Employer-of-Record and global-payroll providers, 31 of which
+publish a list price (the other 32 are quote-only, marked as such
 rather than guessed). Median published EOR fee: **$349/employee/month**. Each row carries
 the provider's delivery model, the price exactly as the provider states it, the price basis, a
 confidence flag, and the **primary-source URL** the figure was taken from. Prices last verified
