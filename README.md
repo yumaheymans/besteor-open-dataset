@@ -6,7 +6,7 @@ machine-readable datasets, released under **[CC BY 4.0](https://creativecommons.
 
 Maintained and kept current by **[BestEOR.co](https://besteor.co/?utm_source=github&utm_medium=dataset&utm_campaign=open-data)**, an independent comparison resource for
 Employer-of-Record and global-payroll buyers. The website is the canonical source;
-this repository is a dated snapshot of it. Fetched 2026-09-24.
+this repository is a dated snapshot of it. Fetched 2026-09-29.
 
 **Need current figures? Download the live exports:**
 
@@ -26,12 +26,12 @@ and checksums. A fetch date is not a legal or price verification date.
 ## What is in here
 
 ### 1. EOR providers and pricing (`data/eor-providers.*`)
-63 Employer-of-Record and global-payroll providers, 31 of which
-publish a list price (the other 32 are quote-only, marked as such
-rather than guessed). Median published EOR fee: **$349/employee/month**. Each row carries
+62 Employer-of-Record and global-payroll providers, 35 of which
+publish a list price (the other 27 are quote-only, marked as such
+rather than guessed). Median published EOR fee: **$399/employee/month**. Each row carries
 the provider's delivery model, the price exactly as the provider states it, the price basis, a
 confidence flag, and the **primary-source URL** the figure was taken from. Prices last verified
-against source on 2026-09-12.
+against source on 2026-09-28.
 
 ### 2. Country employment terms and employer cost (`data/eor-country-employment.*`)
 139 countries, each with the statutory employer cost of employment plus selected
@@ -50,8 +50,8 @@ thresholds, contribution bases and eligibility caveats in each record.
 
 | File | Rows | Format |
 |------|------|--------|
-| `data/eor-providers.csv` | 63 providers | CSV (RFC 4180) |
-| `data/eor-providers.json` | 63 providers | JSON, with dataset-level summary stats |
+| `data/eor-providers.csv` | 62 providers | CSV (RFC 4180) |
+| `data/eor-providers.json` | 62 providers | JSON, with dataset-level summary stats |
 | `data/eor-country-employment.csv` | 139 countries | CSV (RFC 4180), one row per country |
 | `data/eor-country-employment.json` | 139 countries | JSON, nested with per-figure citations |
 

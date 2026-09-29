@@ -1,10 +1,10 @@
 {
-  "generated": "2026-09-24",
-  "providerCount": 63,
-  "publishedPriceCount": 31,
-  "quoteOnlyCount": 32,
-  "medianPrice": 349,
-  "pricesVerified": "2026-09-12",
+  "generated": "2026-09-29",
+  "providerCount": 62,
+  "publishedPriceCount": 35,
+  "quoteOnlyCount": 27,
+  "medianPrice": 399,
+  "pricesVerified": "2026-09-28",
   "countryCount": 139,
   "citedDataPoints": 4901,
   "avgDimsPerCountry": 35.26,
@@ -18,5 +18,5 @@
     "pct": 42.5
   },
   "countrySourceUrls": 1476,
-  "providerSourceUrls": 63
+  "providerSourceUrls": 62
 }

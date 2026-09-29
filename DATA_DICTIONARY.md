@@ -5,7 +5,7 @@ All figures are cited: every value column has a companion `*_source_url` (CSV) o
 with `fixed-amounts` means fixed contributions, not zero. `confidence` preserves the catalog
 flag (`confirmed` or `reported`); consult the linked source for authority and applicability.
 
-## `eor-providers` (63 rows)
+## `eor-providers` (62 rows)
 
 | Column | Meaning |
 |--------|---------|
