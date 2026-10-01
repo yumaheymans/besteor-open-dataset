@@ -6,7 +6,7 @@ machine-readable datasets, released under **[CC BY 4.0](https://creativecommons.
 
 Maintained and kept current by **[BestEOR.co](https://besteor.co/?utm_source=github&utm_medium=dataset&utm_campaign=open-data)**, an independent comparison resource for
 Employer-of-Record and global-payroll buyers. The website is the canonical source;
-this repository is a dated snapshot of it. Fetched 2026-09-29.
+this repository is a dated snapshot of it. Fetched 2026-10-01.
 
 **Need current figures? Download the live exports:**
 
@@ -37,8 +37,8 @@ against source on 2026-09-28.
 139 countries, each with the statutory employer cost of employment plus selected
 employment terms useful when planning a hire: Paid public holidays, Statutory sick leave, Maternity leave, Paternity / parental leave, Standard working hours, Overtime premium, Notice period, Severance pay, Probation period, Termination regime, 13th-month salary, Payroll cycle, Data-protection regime, Business language, Time zone. Plus a World Bank macro backbone
 (currency, GNI/GDP per capita, population, unemployment) and the statutory minimum wage and paid
-annual leave. **4,901 cited data points** in the underlying site catalog
-(~35.26 per country), and **each figure retains its cited source URL**. Sources include government publications and
+annual leave. **4,897 cited data points** in the underlying site catalog
+(~35.23 per country), and **each figure retains its cited source URL**. Sources include government publications and
 secondary legal/tax references. Representative percentage-based employer contributions range from
 **0%** (United Arab Emirates) to **42.5%**
 (France). 138 records use a

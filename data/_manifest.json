@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-09-29T13:17:09.945Z",
-  "content_fingerprint": "b90dd7cbba85eb8fdc2ee8530ed6fa3fb628e7d2a556ac8addcc91794b40c5f4",
+  "fetched_at": "2026-10-01T14:56:28.461Z",
+  "content_fingerprint": "3d0f3ba617466ef86b8ebf29573fbcf132706330f1d411896cefd042d3a39a07",
   "generator_version": 2,
   "note": "Fetch time is not source verification time. Read per-record sources and price verification dates.",
   "files": {
@@ -10,15 +10,15 @@
     },
     "eor-providers.json": {
       "source": "https://besteor.co/data/eor-providers.json",
-      "sha256": "9edf39d53ace6e0351f99a7ea8d4fdb6c78ed0579c1736675a48722d34f6e200"
+      "sha256": "c9314aa99b409d9bb456251d5bfa7149d2695accb9492b06fff632f4915c57a4"
     },
     "eor-country-employment.csv": {
       "source": "https://besteor.co/data/eor-country-employment.csv",
-      "sha256": "a2a96ff49d2de4b65e461cf3397115f0f1174a15e96e71563f9da0f2853a7a41"
+      "sha256": "dae666884caae985f45bb2ae36040e809a0192e7421453f6f4bcfa926cd34572"
     },
     "eor-country-employment.json": {
       "source": "https://besteor.co/data/eor-country-employment.json",
-      "sha256": "08ce117b30c5753ba7c8bb8868517847417e8ab8be1385ca32530a133c729db9"
+      "sha256": "9d7bff3e9bc1b14a82db06dd3eb027fd07f842eddd370d65c46bdcbd98dd6912"
     }
   }
 }

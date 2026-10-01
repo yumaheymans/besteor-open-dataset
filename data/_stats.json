@@ -1,13 +1,13 @@
 {
-  "generated": "2026-09-29",
+  "generated": "2026-10-01",
   "providerCount": 62,
   "publishedPriceCount": 35,
   "quoteOnlyCount": 27,
   "medianPrice": 399,
   "pricesVerified": "2026-09-28",
   "countryCount": 139,
-  "citedDataPoints": 4901,
-  "avgDimsPerCountry": 35.26,
+  "citedDataPoints": 4897,
+  "avgDimsPerCountry": 35.23,
   "statutoryTerms": 15,
   "lowest": {
     "country": "United Arab Emirates",
@@ -17,6 +17,6 @@
     "country": "France",
     "pct": 42.5
   },
-  "countrySourceUrls": 1476,
+  "countrySourceUrls": 1850,
   "providerSourceUrls": 62
 }
