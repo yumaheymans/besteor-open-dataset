@@ -18,5 +18,13 @@
     "pct": 42.5
   },
   "countrySourceUrls": 1850,
-  "providerSourceUrls": 62
+  "providerSourceUrls": 62,
+  "statutoryTermCitations": 1861,
+  "vendorHostedTermCitations": 899,
+  "vendorHostedTermShare": 48.3,
+  "topVendorSites": {
+    "rivermate.com": 713,
+    "playroll.com": 95,
+    "deel.com": 18
+  }
 }

@@ -59,10 +59,12 @@ See **[DATA_DICTIONARY.md](DATA_DICTIONARY.md)** for every column and field.
 
 ## Methodology and integrity
 
-- **Sources stay attached.** Prices come from the provider's own pricing page;
-  statutory figures come from governments, official gazettes, and neutral legal/tax references
-  (PwC, DLA Piper, WageIndicator, ILO-adjacent bodies, and the like), never from a competing EOR
-  vendor as the authority for its rivals.
+- **Sources stay attached.** Prices come from the provider's own pricing page. Statutory figures cite
+  governments, official gazettes and neutral legal/tax references (PwC, DLA Piper, WageIndicator,
+  ILO-adjacent bodies, and the like) where they have been re-sourced. 899 of
+  1,861 statutory-term citations (48.3%) still point to a country guide
+  published by an EOR provider in this dataset (rivermate.com 713, playroll.com 95, deel.com 18).
+  Those are being replaced with primary sources; check a figure's source before relying on it.
 - **Confidence is explicit.** The catalog's `confirmed` and `reported` flags are
   preserved. Inspect the linked source to assess its authority and applicability.
 - **Nothing is invented.** Quote-only prices are blank, not estimated. Fixed contributions have a blank
