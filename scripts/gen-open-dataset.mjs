@@ -137,7 +137,7 @@ export async function collectSnapshot() {
   files["data/_manifest.json"] = JSON.stringify({
     fetched_at: fetchedAt,
     content_fingerprint: fingerprint,
-    generator_version: 2,
+    generator_version: 3,
     note: "Fetch time is not source verification time. Read per-record sources and price verification dates.",
     files: Object.fromEntries(DATA_FILES.map((name) => [name, {
       source: `${SITE}/data/${name}`,
@@ -151,6 +151,28 @@ export async function collectSnapshot() {
   const pricesVerified = prov.prices_last_verified ?? "";
   const countryCitedUrls = countCitedUrls(countryCsv);
   const providerCitedUrls = countCitedUrls(provCsv);
+  // Statutory-term citations whose page belongs to an EOR provider in this same dataset (its own
+  // country guide). Counted from the data and stated in the README, so the methodology can never
+  // claim more independence than the citations show. Registrable domain: help.justworks.com and
+  // justworks.com are one provider.
+  const siteOf = (url) => {
+    try {
+      const labels = new URL(url).hostname.toLowerCase().replace(/^www\./, "").split(".");
+      const n = labels.length >= 3 && /^(co|com|org|net|ac|gov)$/.test(labels[labels.length - 2]) && labels[labels.length - 1].length === 2 ? 3 : 2;
+      return labels.slice(-n).join(".");
+    } catch {
+      return null;
+    }
+  };
+  const providerSites = new Set((prov.providers ?? []).map((p) => siteOf(p.price_source_url)).filter(Boolean));
+  const termUrls = countryDs.countries.flatMap((c) => Object.values(c.employment_terms ?? {}).map((t) => t.source_url).filter(Boolean));
+  const vendorCounts = new Map();
+  for (const url of termUrls) {
+    const site = siteOf(url);
+    if (site && providerSites.has(site)) vendorCounts.set(site, (vendorCounts.get(site) ?? 0) + 1);
+  }
+  const vendorHostedTermCitations = [...vendorCounts.values()].reduce((a, b) => a + b, 0);
+  const topVendorSites = [...vendorCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3);
 
   const stats = {
     generated: date,
@@ -167,6 +189,10 @@ export async function collectSnapshot() {
     highest: countryDs.highest_employer_cost,
     countrySourceUrls: countryCitedUrls,
     providerSourceUrls: providerCitedUrls,
+    statutoryTermCitations: termUrls.length,
+    vendorHostedTermCitations,
+    vendorHostedTermShare: termUrls.length ? Math.round((vendorHostedTermCitations / termUrls.length) * 1000) / 10 : 0,
+    topVendorSites: Object.fromEntries(topVendorSites),
   };
 
   files["data/_stats.json"] = JSON.stringify(stats, null, 2) + "\n";
@@ -234,10 +260,12 @@ See **[DATA_DICTIONARY.md](DATA_DICTIONARY.md)** for every column and field.
 
 ## Methodology and integrity
 
-- **Sources stay attached.** Prices come from the provider's own pricing page;
-  statutory figures come from governments, official gazettes, and neutral legal/tax references
-  (PwC, DLA Piper, WageIndicator, ILO-adjacent bodies, and the like), never from a competing EOR
-  vendor as the authority for its rivals.
+- **Sources stay attached.** Prices come from the provider's own pricing page. Statutory figures cite
+  governments, official gazettes and neutral legal/tax references (PwC, DLA Piper, WageIndicator,
+  ILO-adjacent bodies, and the like) where they have been re-sourced. ${stats.vendorHostedTermCitations.toLocaleString("en-US")} of
+  ${stats.statutoryTermCitations.toLocaleString("en-US")} statutory-term citations (${stats.vendorHostedTermShare}%) still point to a country guide
+  published by an EOR provider in this dataset${topVendorSites.length ? ` (${topVendorSites.map(([site, n]) => `${site} ${n.toLocaleString("en-US")}`).join(", ")})` : ""}.
+  Those are being replaced with primary sources; check a figure's source before relying on it.
 - **Confidence is explicit.** The catalog's \`confirmed\` and \`reported\` flags are
   preserved. Inspect the linked source to assess its authority and applicability.
 - **Nothing is invented.** Quote-only prices are blank, not estimated. Fixed contributions have a blank
